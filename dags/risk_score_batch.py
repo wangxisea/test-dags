@@ -30,7 +30,7 @@ start = DummyOperator(task_id="START", dag=dag)
 # templated_command = """
 # kubectl apply -f config/trx-dedup-deploy-svc.yaml
 # """
-templated_command = "sleep 90 && kubectl get pods -n {{ params.namespace }}"
+templated_command = "kubectl get pods -n {{ params.namespace }}"
 
 tsk_dedup = BashOperator(
     dag=dag,
