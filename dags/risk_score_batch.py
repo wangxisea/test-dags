@@ -4,9 +4,6 @@ from airflow.contrib.operators.kubernetes_pod_operator import KubernetesPodOpera
 from airflow.operators.bash_operator import  BashOperator
 from airflow.operators.dummy_operator import DummyOperator
 
-import time
-time.sleep(120)
-
 
 default_args = {
     "owner": "airflow",
@@ -33,7 +30,7 @@ start = DummyOperator(task_id="START", dag=dag)
 # templated_command = """
 # kubectl apply -f config/trx-dedup-deploy-svc.yaml
 # """
-templated_command = "kubectl get pods -n {{ params.namespace }}"
+templated_command = "sleep 90 && kubectl get pods -n {{ params.namespace }}"
 
 tsk_dedup = BashOperator(
     dag=dag,
