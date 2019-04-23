@@ -30,13 +30,13 @@ start = DummyOperator(task_id="START", dag=dag)
 # templated_command = """
 # kubectl apply -f config/trx-dedup-deploy-svc.yaml
 # """
-templated_command = "kubectl get pods -n {{ params.namespace }}"
+templated_command = "kubectl apply -f {{ params.file }}"
 
 tsk_dedup = BashOperator(
     dag=dag,
     task_id="client_bank_transaction_dedup",
     bash_command=templated_command,
-    params={'namespace': 'airflow'},
+    params={'file': 'trx-dedup-deploy.yaml'},
 )
 
 end = DummyOperator(task_id="END", dag=dag)
