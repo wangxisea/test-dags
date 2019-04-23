@@ -36,7 +36,7 @@ tsk_dedup = BashOperator(
     dag=dag,
     task_id="client_bank_transaction_dedup",
     bash_command=templated_command,
-    params={'file': 'trx-dedup-deploy.yaml'},
+    params={'file': '$AIRFLOW_HOME/dags/trx-dedup-deploy.yaml'},
 )
 
 end = DummyOperator(task_id="END", dag=dag)
