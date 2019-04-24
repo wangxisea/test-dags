@@ -1,6 +1,5 @@
 from airflow import DAG
 from datetime import datetime, timedelta
-from airflow.contrib.operators.kubernetes_pod_operator import KubernetesPodOperator
 from airflow.operators.bash_operator import  BashOperator
 from airflow.operators.dummy_operator import DummyOperator
 
@@ -35,7 +34,7 @@ tsk_dedup = BashOperator(
     task_id="client_bank_transaction_dedup",
     bash_command=templated_command_apply,
     params={'file': '$AIRFLOW_HOME/dags/trx-dedup-deploy.yaml'},
-    trigger_rule='none_skipped'
+    trigger_rule='all_done'
 )
 
 tsk_clean_sparkapp = BashOperator(
