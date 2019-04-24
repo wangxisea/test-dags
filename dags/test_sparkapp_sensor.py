@@ -20,7 +20,7 @@ default_args = {
 dag = DAG(
     "test_sparkapp_sensor",
     default_args=default_args,
-    schedule_interval="1 10 * * *",
+    schedule_interval="@once",
     catchup=False,
     max_active_runs=1,
 )

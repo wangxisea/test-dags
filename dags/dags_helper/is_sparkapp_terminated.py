@@ -45,7 +45,7 @@ def time_sparkapp_elapse(crd_name: str):
     return time_elapse
 
 
-def main(yaml_config_path: str):
+def main(yaml_config_path: str, sleep_sec: int = 10):
     with open(yaml_config_path, "r") as manifest:
         try:
             crd_name = yaml.load(manifest, Loader=yaml.FullLoader)["metadata"]["name"]
@@ -58,7 +58,7 @@ def main(yaml_config_path: str):
             print(f"sparkapp {crd_name} completed!")
             print(f"sparkapp elapsed {time_sparkapp_elapse(crd_name)}")
             break
-        time.sleep(10)
+        time.sleep(sleep_sec)
 
 """
 sample output of the ['status'] section of the manifest result
