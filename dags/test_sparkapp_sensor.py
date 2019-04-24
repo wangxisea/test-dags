@@ -1,4 +1,4 @@
-from helper import is_spark_app_terminated
+from dags_helper import is_spark_app_terminated
 
 from airflow import DAG
 from datetime import datetime, timedelta
