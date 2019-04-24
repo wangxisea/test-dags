@@ -5,8 +5,8 @@ import yaml
 import argparse
 from datetime import datetime
 
-# kube_config.load_incluster_config()
-kube_config.load_kube_config()
+kube_config.load_incluster_config()
+# kube_config.load_kube_config()
 crd = CustomObjectsApi()
 
 
