@@ -47,3 +47,4 @@ spec:
   #   prometheus:
   #     jmxExporterJar: "/opt/spark/jars/jmx_prometheus_javaagent-0.3.1.jar"
   #     port: 8090
+
