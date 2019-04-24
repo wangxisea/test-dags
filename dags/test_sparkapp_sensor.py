@@ -3,6 +3,7 @@ from dags_helper.is_sparkapp_terminated import main
 from airflow import DAG
 from datetime import datetime, timedelta
 from airflow.operators.python_operator import PythonOperator
+import os
 
 
 default_args = {
@@ -28,5 +29,5 @@ sensor = PythonOperator(
     dag=dag,
     task_id="client_bank_transaction_dedup",
     python_callable=main,
-    op_kwargs={"yaml_config_path": "trx-dedup-deploy.yaml"}
+    op_kwargs={"yaml_config_path": f"{os.getenv('AIRFLOW_HOME')}/dags/config/trx-dedup-deploy.yaml"}
 )
