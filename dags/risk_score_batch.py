@@ -19,7 +19,7 @@ default_args = {
 dag = DAG(
     "risk_score_batch",
     default_args=default_args,
-    schedule_interval="* 10 * * *",
+    schedule_interval="1 10 * * *",
     catchup=False,
     max_active_runs=1,
 )
