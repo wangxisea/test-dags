@@ -35,6 +35,7 @@ tsk_dedup = BashOperator(
     task_id="client_bank_transaction_dedup",
     bash_command=templated_command_apply,
     params={'file': '$AIRFLOW_HOME/dags/trx-dedup-deploy.yaml'},
+    trigger_rule='all_done'
 )
 
 tsk_clean_sparkapp = BashOperator(
