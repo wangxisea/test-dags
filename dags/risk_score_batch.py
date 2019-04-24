@@ -26,20 +26,26 @@ dag = DAG(
 
 start = DummyOperator(task_id="START", dag=dag)
 
+templated_command_apply = "kubectl apply -f {{ params.file }}"
+templated_command_delete = "kubectl delete -f {{ params.file }}"
 
-# templated_command = """
-# kubectl apply -f config/trx-dedup-deploy-svc.yaml
-# """
-templated_command = "kubectl apply -f {{ params.file }}"
 
 tsk_dedup = BashOperator(
     dag=dag,
     task_id="client_bank_transaction_dedup",
-    bash_command=templated_command,
+    bash_command=templated_command_apply,
+    params={'file': '$AIRFLOW_HOME/dags/trx-dedup-deploy.yaml'},
+)
+
+tsk_clean_sparkapp = BashOperator(
+    dag=dag,
+    task_id="clean_sparkapp_deployment",
+    bash_command=templated_command_delete,
     params={'file': '$AIRFLOW_HOME/dags/trx-dedup-deploy.yaml'},
 )
 
 end = DummyOperator(task_id="END", dag=dag)
 
 tsk_dedup.set_upstream(start)
-end.set_upstream(tsk_dedup)
+tsk_clean_sparkapp.set_upstream(tsk_dedup)
+end.set_upstream(tsk_clean_sparkapp)
