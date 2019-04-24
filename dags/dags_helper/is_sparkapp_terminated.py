@@ -45,17 +45,8 @@ def time_sparkapp_elapse(crd_name: str):
     return time_elapse
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--k8s_config",
-        type=str,
-        help="config file path",
-        default="../config/trx-dedup-deploy.yaml",
-    )
-    args = parser.parse_args()
-
-    with open(args.k8s_config, "r") as manifest:
+def main(yaml_config_path: str):
+    with open(yaml_config_path, "r") as manifest:
         try:
             crd_name = yaml.load(manifest, Loader=yaml.FullLoader)["metadata"]["name"]
         except yaml.YAMLError as exc:

@@ -1,4 +1,4 @@
-from dags_helper import is_sparkapp_terminated
+from dags_helper.is_sparkapp_terminated import main
 
 from airflow import DAG
 from datetime import datetime, timedelta
@@ -27,6 +27,6 @@ dag = DAG(
 sensor = PythonOperator(
     dag=dag,
     task_id="client_bank_transaction_dedup",
-    python_callable=is_sparkapp_terminated,
-    op_kwargs={"--k8s_config": "trx-dedup-deploy.yaml"}
+    python_callable=main,
+    op_kwargs={"yaml_config_path": "trx-dedup-deploy.yaml"}
 )
