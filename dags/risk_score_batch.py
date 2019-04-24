@@ -49,7 +49,7 @@ tsk_clean_sparkapp = BashOperator(
 
 tsk_sparkapp_sensor = PythonOperator(
     dag=dag,
-    task_id="client_bank_transaction_dedup",
+    task_id="sensoring_sparkapp",
     python_callable=main,
     op_kwargs={"yaml_config_path": f"{os.getenv('AIRFLOW_HOME')}/dags/config/trx-dedup-deploy.yaml", "sleep_sec": 15}
 )
