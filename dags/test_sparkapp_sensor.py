@@ -18,7 +18,7 @@ default_args = {
 }
 
 dag = DAG(
-    "risk_score_batch",
+    "test_sparkapp_sensor",
     default_args=default_args,
     schedule_interval="1 10 * * *",
     catchup=False,
