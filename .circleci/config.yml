@@ -23,6 +23,7 @@ jobs:
           branches:
             only:
               - master
+              - develop
 
 
 
