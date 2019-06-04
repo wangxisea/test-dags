@@ -10,14 +10,18 @@ jobs:
       TEST: true
 
     steps:
-      - checkout $TRAVIS_BRANCH
+      - checkout
+      - include:
+          - # require the branch name to be master (note for PRs this is the base branch name)
+            if: branch = master
+            env: FOO=foo
       - run:
           name: current branch
           command: |
-            git branch
+            printenv | grep foo
 
 
-            kubectl set image -f ~/repo/k8s-resources/customer_transactions/trx-listener-media-deploy.yaml trx-customer-transactions-listener-media=$AWS_ECR_REGISTRY_CUST_TRX:$CIRCLE_PREVIOUS_BUILD_NUM
+
 workflows:
   version: 2
 
