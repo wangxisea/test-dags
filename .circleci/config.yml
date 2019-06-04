@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build_and_test:
+    docker:
+      - image: circleci/python:3.6.5
+
+    working_directory: ~/repo
+
+    environment:
+      TEST: true
+
+    steps:
+      - checkout $TRAVIS_BRANCH
+      - run:
+          name: current branch
+          command: |
+            git branch
