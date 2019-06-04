@@ -11,14 +11,13 @@ jobs:
 
     steps:
       - checkout
-      - include:
-          - # require the branch name to be master (note for PRs this is the base branch name)
-            if: branch = master
-            env: FOO=foo
       - run:
           name: current branch
           command: |
             printenv | grep foo
+          branches:
+            only:
+              - master
 
 
 
