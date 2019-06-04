@@ -24,3 +24,9 @@ workflows:
   CICD:
     jobs:
       - build_and_test:
+          filters:
+            branches:
+              only:
+                - develop
+                - /release.*/
+                - master
