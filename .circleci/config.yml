@@ -18,7 +18,7 @@ jobs:
       - run:
           name: current branch
           command: |
-            env | grep foo
+            echo $(env | grep foo)
             git branch
           branches:
             only:
