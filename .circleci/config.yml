@@ -10,11 +10,14 @@ jobs:
       TEST: true
 
     steps:
-      - checkout
+      - run:
+          name: checkout to the branch
+          command: |
+            git checkout $CIRCLE_BRANCH
       - run:
           name: current branch
           command: |
-            printenv | grep foo
+            env | grep foo
           branches:
             only:
               - master
