@@ -18,11 +18,12 @@ jobs:
       - run:
           name: current branch
           command: |
-            env | grep foo
+            echo $(env | grep foo)
             git branch
           branches:
             only:
               - master
+              - develop
 
 
 
@@ -36,5 +37,5 @@ workflows:
             branches:
               only:
                 - develop
-                - /release.*/
+                - /release*/
                 - master
