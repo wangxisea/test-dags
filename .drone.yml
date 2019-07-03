@@ -7,16 +7,12 @@ platform:
   arch: amd64
 
 steps:
-steps:
 - name: frontend
-  image: node
+  image: node:slim
   commands:
-  - npm install
-  - npm test
+  - npm version
 
-steps:
-- name: frontend2
-  image: node
+- name: python
+  image: python:rc-alpine
   commands:
-  - npm install
-  - npm test
+  - python -V
