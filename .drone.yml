@@ -1,18 +1,13 @@
 kind: pipeline
 name: default
+insecure: true
 
 platform:
   os: linux
   arch: amd64
 
 steps:
-- name: frontend
-  image: node:slim
-  commands:
-  - npm version
-
 - name: python
   image: python:rc-alpine
   commands:
   - python -V
-  
