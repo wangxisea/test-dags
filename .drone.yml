@@ -1,13 +1,13 @@
 kind: pipeline
-
+name: default
 
 platform:
   os: linux
-  arch: amd64
+  arch: arm
 
 steps:
 - name: build
   image: golang
   commands:
   - go build
-  - go test
+  - go test -short
