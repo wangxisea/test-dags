@@ -1,7 +1,5 @@
 kind: pipeline
 
-insecure: true
-
 platform:
   os: linux
   arch: amd64
