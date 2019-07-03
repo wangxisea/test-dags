@@ -10,3 +10,4 @@ steps:
 trigger:
   branch:
   - master
+  - develop
