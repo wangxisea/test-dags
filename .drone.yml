@@ -6,8 +6,16 @@ platform:
   arch: amd64
 
 steps:
-- name: build
-  image: golang
+steps:
+- name: frontend
+  image: node
   commands:
-  - go build
-  - go test -short
+  - npm install
+  - npm test
+
+steps:
+- name: frontend2
+  image: node
+  commands:
+  - npm install
+  - npm test
