@@ -12,3 +12,5 @@ steps:
   - go build
   - go test -short
 
+node:
+  instance: "failure-domain.beta.kubernetes.io/region: eu-central-1"
