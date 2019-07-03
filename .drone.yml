@@ -7,8 +7,12 @@ platform:
   arch: amd64
 
 steps:
-- name: python
+- name: python1
   image: python:rc-alpine
   commands:
   - python -V
 
+- name: python2
+  image: python:rc-alpine
+  commands:
+  - python -V
