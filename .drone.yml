@@ -11,3 +11,4 @@ steps:
   image: node
   commands:
   - npm version
+  
